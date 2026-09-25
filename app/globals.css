@@ -1,26 +1,163 @@
 @import "tailwindcss";
 
+@theme {
+  --color-ivory: #f4f0e8;
+  --color-plum: #21152e;
+  --color-coral: #ff5c5c;
+  --color-lavender: #b9a7ff;
+  --color-ink: #111014;
+  --color-taupe: #8e8790;
+  --font-display: var(--font-display);
+  --font-editorial: var(--font-editorial);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+  --ease-ship: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f4f0e8;
+  --foreground: #111014;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* NOTE: no `scroll-behavior: smooth` — Lenis owns smoothing. */
+
+html.lenis,
+html.lenis body {
+  height: auto;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
+  overflow-x: clip;
+}
+
+::selection {
+  background: #ff5c5c;
+  color: #f4f0e8;
+}
+
+/* Plum scenes keep the coral signal on select */
+.bg-plum-select ::selection,
+section[class*="bg-[#21152E]"] ::selection {
+  background: #b9a7ff;
+  color: #21152e;
+}
+
+:focus-visible {
+  outline: 2px solid #ff5c5c;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f4f0e8;
+}
+::-webkit-scrollbar-thumb {
+  background: #21152e;
+  border-radius: 8px;
+}
+
+/* Display type helpers */
+.font-display {
+  font-family: var(--font-display), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+}
+
+.font-editorial {
+  font-family: var(--font-editorial), serif;
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* Hairlines */
+.rule-ink {
+  border-color: rgba(17, 16, 20, 0.12);
+}
+.rule-ivory {
+  border-color: rgba(244, 240, 232, 0.14);
+}
+
+/* Scene-transition wipe */
+@keyframes scene-wipe {
+  from {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  45% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  55% {
+    transform: scaleX(1);
+    transform-origin: right;
+  }
+  to {
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+}
+
+.animate-scene-wipe {
+  animation: scene-wipe 0.9s var(--ease-ship) both;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-scene-wipe {
+    animation: none;
+  }
+}
+
+/* Tier 3: the logbook prints as a one-page document, not a website. */
+@media print {
+  header,
+  aside,
+  nav[aria-label="Section shortcuts"],
+  [aria-hidden="true"] {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+    color: #000;
+  }
+  section {
+    background: #fff !important;
+    color: #000 !important;
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+    break-inside: avoid;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 }
