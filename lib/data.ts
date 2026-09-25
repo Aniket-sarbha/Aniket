@@ -1,5 +1,5 @@
-// TODO: replace with production domain + real LinkedIn URL.
-export const siteUrl = "https://example.com";
+// ponytail: production domain is the live portfolio URL; no invented socials.
+export const siteUrl = "https://aniket-blue.vercel.app";
 
 export const profile = {
   name: "Aniket Sarbha",
@@ -8,7 +8,7 @@ export const profile = {
   email: "sarbhaaniket@gmail.com",
   phone: "7678573085",
   github: "https://github.com/Aniket-sarbha",
-  linkedin: "https://linkedin.com",
+  linkedin: undefined as string | undefined,
   resume: "/resume.pdf",
   available: true,
 };
@@ -83,13 +83,17 @@ export type Project = {
   overview: string;
   built: string[];
   outcomes: string[];
+  role: string;
+  type: string;
+  status: string;
+  indexTags: string;
 };
 
 export const projects: Project[] = [
   {
     slug: "file-drive",
     title: "File Drive",
-    tagline: "SaaS file manager with AI summarization",
+    tagline: "AI-powered file management for teams.",
     stack: ["Next.js", "Convex", "Clerk", "Gemini"],
     liveUrl: "https://file-drive-coral.vercel.app/",
     repoUrl: "https://github.com/Aniket-sarbha/File-drive",
@@ -108,6 +112,10 @@ export const projects: Project[] = [
     ],
     overview:
       "Teams shared files over chat threads and Drive links — slow to find, risky to permission. File Drive gives organizations one searchable home for uploads with secure role-based access.",
+    role: "Full stack",
+    type: "SaaS / AI",
+    status: "Shipped",
+    indexTags: "AI / Files / RBAC",
     built: [
       "Drag-and-drop uploads with large-file support on a type-safe Convex backend",
       "Google Gemini summarization with a PDF to DOCX conversion pipeline",
@@ -118,7 +126,7 @@ export const projects: Project[] = [
   {
     slug: "learning-exchange",
     title: "Learning Exchange",
-    tagline: "Knowledge-sharing platform with RBAC",
+    tagline: "A governed knowledge platform with role-based publishing.",
     stack: ["Next.js", "Supabase", "Framer Motion", "TypeScript"],
     liveUrl: "https://fortificationlearninghub.org/",
     year: "2024",
@@ -140,6 +148,10 @@ export const projects: Project[] = [
     ],
     overview:
       "A community's knowledge lived in scattered docs and chats. The Learning Exchange centralizes the Knowledge Hub, Resources, News & Events, and Webinars behind governed publishing that non-technical editors control.",
+    role: "Full stack",
+    type: "Platform / CMS",
+    status: "Shipped",
+    indexTags: "Knowledge / RBAC / CMS",
     built: [
       "Super Admin, Admin, and User RBAC with content approval workflows",
       "Centralized dashboard for routes, users, contact submissions, and the moderation queue",
@@ -150,7 +162,7 @@ export const projects: Project[] = [
   {
     slug: "margaux-pets",
     title: "Margaux Pets Shop",
-    tagline: "Smart QR tags for every pet",
+    tagline: "QR-powered recovery infrastructure for lost pets.",
     stack: ["React", "Supabase", "Vite", "Shadcn"],
     year: "2025",
     colorway: "ivory",
@@ -167,6 +179,10 @@ export const projects: Project[] = [
     ],
     overview:
       "Lost pets meant paper flyers and dead ends. Built at Doozer Studios, this platform turns a tag scan into a reunion: public pet profiles with contacts, photos, and GPS for owners, shelters, and brands.",
+    role: "Full stack developer · Doozer Studios",
+    type: "QR / GPS platform",
+    status: "Shipped",
+    indexTags: "QR / GPS / Recovery",
     built: [
       "QR-to-onboarding flow from scan to public profile with contacts, photos, and GPS",
       "Scan analytics with recovery workflows across managed tags",
@@ -178,7 +194,7 @@ export const projects: Project[] = [
     slug: "yokcash",
     title: "Yokcash",
     accent: "currency",
-    tagline: "Discounted game currency for every gamer",
+    tagline: "A high-volume storefront for digital game currency.",
     stack: ["Next.js", "Prisma", "PostgreSQL", "NextAuth.js"],
     repoUrl: "https://github.com/Aniket-sarbha/game-ecommerce",
     year: "2025",
@@ -200,6 +216,10 @@ export const projects: Project[] = [
     ],
     overview:
       "A gaming catalog spread across storefronts was slow to browse and manual to fulfill. Built at Green Dharma Lifestyles, the platform pairs optimized SSR storefronts with automated order APIs.",
+    role: "Full stack developer · Green Dharma",
+    type: "Commerce / SSR",
+    status: "Shipped",
+    indexTags: "Commerce / SSR / Automation",
     built: [
       "Optimized SSR storefronts with search, sort, and featured-game carousels",
       "Automated REST fulfillment workflows with multi-currency support",
@@ -207,6 +227,20 @@ export const projects: Project[] = [
     ],
     outcomes: [],
   },
+];
+
+// ponytail: flat editorial list replaces the grouped skills wall.
+export const toolsOfTrade = [
+  "React",
+  "Next.js",
+  "TypeScript",
+  "Node",
+  "PostgreSQL",
+  "Supabase",
+  "Prisma",
+  "Convex",
+  "Docker",
+  "AWS",
 ];
 
 export const skills: { group: string; items: string[] }[] = [

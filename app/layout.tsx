@@ -53,7 +53,7 @@ const jsonLd = {
   address: profile.location,
   email: profile.email,
   url: siteUrl,
-  sameAs: [profile.github, profile.linkedin],
+  sameAs: [profile.github, profile.linkedin].filter(Boolean) as string[],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

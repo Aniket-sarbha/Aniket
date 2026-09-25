@@ -1,26 +1,23 @@
-import { skills } from "@/lib/data";
-import { SectionHeading } from "@/components/ui/section-heading";
+import { toolsOfTrade } from "@/lib/data";
 import { Reveal } from "@/components/chrome/reveal";
 
 export function Skills() {
   return (
     <section id="skills" className="scroll-mt-20 bg-[#F4F0E8] py-24 text-[#111014] md:py-32">
       <div className="mx-auto max-w-7xl px-5 md:px-10">
-        <SectionHeading index="03" kicker="Capabilities" title="Stack I" accent="reach for" />
-        <div className="border-t rule-ink">
-          {skills.map((g, i) => (
-            <Reveal key={g.group} delay={(i % 5) * 0.05}>
-              <div className="grid grid-cols-12 gap-x-5 gap-y-2 border-b rule-ink py-6 md:py-7">
-                <p className="col-span-12 font-mono text-xs uppercase tracking-[0.18em] text-[#FF5C5C] md:col-span-3">
-                  {String(i + 1).padStart(2, "0")} — {g.group}
-                </p>
-                <p className="col-span-12 text-lg leading-relaxed md:col-span-9 md:text-xl">
-                  {g.items.join(" · ")}
-                </p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
+        <Reveal>
+          <p className="font-mono text-xs uppercase tracking-[0.18em] text-[#B3272D]">
+            03. Tools of the trade
+          </p>
+          <h2 className="font-display mt-4 text-[13vw] leading-[0.9] sm:text-6xl md:text-8xl">
+            {toolsOfTrade.slice(0, 5).join(" ")}
+            <br />
+            <span className="text-[#111014]/20">{toolsOfTrade.slice(5).join(" ")}</span>
+          </h2>
+          <p className="font-editorial mt-6 max-w-xl text-xl leading-relaxed text-[#111014]/70 md:text-2xl">
+            I care less about the tool than what the tool lets me ship.
+          </p>
+        </Reveal>
       </div>
     </section>
   );

@@ -18,7 +18,7 @@ export function SectionHeading({
 }) {
   return (
     <Reveal className={cn("mb-12", className)}>
-      <p className="font-mono text-xs uppercase tracking-[0.18em] text-[#FF5C5C]">
+      <p className={cn("font-mono text-xs uppercase tracking-[0.18em]", dark ? "text-[#FF5C5C]" : "text-[#B3272D]")}>
         {index}. {kicker}
       </p>
       <h2

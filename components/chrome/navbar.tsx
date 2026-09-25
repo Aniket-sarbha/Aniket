@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { navLinks, profile } from "@/lib/data";
+import { navLinks, profile, projects } from "@/lib/data";
 import { ManifestRow } from "@/components/chrome/manifest-row";
 import { HomeLink } from "@/components/chrome/home-link";
 import { useScrollSpy } from "@/hooks/use-scroll-spy";
@@ -18,7 +18,10 @@ export function Navbar() {
   const pathname = usePathname();
   const onHome = pathname === "/";
   const caseSlug = pathname.startsWith("/projects/") ? pathname.split("/").pop() : null;
-  const active = useScrollSpy(navLinks.map((l) => l.href.slice(1)));
+  // ponytail: project scenes report as "projects" so the label tracks the archive.
+  const sceneIds = projects.map((p) => `scene-${p.slug}`);
+  const rawActive = useScrollSpy(["projects", ...sceneIds, ...navLinks.slice(1).map((l) => l.href.slice(1))]);
+  const active = rawActive && rawActive.startsWith("scene-") ? "projects" : rawActive;
   const secLabel = caseSlug
     ? `SHIP—${caseSlug.replace(/-/g, " ").toUpperCase()}`
     : active
@@ -76,7 +79,7 @@ export function Navbar() {
             A.SARBH<span className="text-[#FF5C5C]">—LOG</span>
           </HomeLink>
           <div className="flex items-center gap-5">
-            <p className="hidden font-mono text-[11px] uppercase tracking-[0.18em] text-[#8E8790] lg:block">
+              <p className="hidden font-mono text-[11px] uppercase tracking-[0.18em] text-[#57515B] lg:block">
               {secLabel}
             </p>
             <button
@@ -110,7 +113,7 @@ export function Navbar() {
           >
             <ManifestRow
               dark
-              items={["Index", profile.location, profile.available ? "Open" : "Closed"]}
+              items={["Index", profile.location, profile.available ? "Available" : "Closed"]}
               className="mb-6"
             />
             <ul className="space-y-1">

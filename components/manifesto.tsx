@@ -5,7 +5,7 @@ export function Manifesto() {
     <section aria-label="Manifesto" className="border-t rule-ink bg-[#F4F0E8] py-20 text-[#111014] md:py-28">
       <div className="mx-auto grid max-w-7xl grid-cols-12 gap-x-5 px-5 md:px-10">
         <Reveal className="col-span-12 lg:col-span-9">
-          <p className="font-mono text-xs uppercase tracking-[0.18em] text-[#FF5C5C]">
+          <p className="font-mono text-xs uppercase tracking-[0.18em] text-[#B3272D]">
             The logbook
           </p>
           <p className="font-display mt-4 text-3xl leading-[1.05] md:text-5xl">

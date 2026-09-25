@@ -14,7 +14,9 @@ export function ManifestRow({
     <p
       className={cn(
         "font-mono text-[11px] uppercase tracking-[0.18em]",
-        dark ? "text-[#F4F0E8]/60" : "text-[#8E8790]",
+        // ponytail: functional text uses bark on ivory (AA); coral stays for
+        // the decorative aria-hidden separators below.
+        dark ? "text-[#F4F0E8]/60" : "text-[#57515B]",
         className
       )}
     >
