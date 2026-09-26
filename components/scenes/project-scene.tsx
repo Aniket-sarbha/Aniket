@@ -44,7 +44,7 @@ function Frame({
       <figcaption
           className={cn(
           "border-t px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em]",
-          dark ? "border-white/10 bg-[#21152E] text-[#F4F0E8]/60" : "border-[#111014]/10 bg-[#F4F0E8] text-[#57515B]"
+          dark ? "border-[#1E2823]/10 bg-[#E5EEE5] text-[#5D6961]" : "border-[#1E2823]/10 bg-[#F6F1E8] text-[#5D6961]"
         )}
       >
         {caption}
@@ -82,12 +82,12 @@ function Manifest({ project, dark }: { project: Project; dark: boolean }) {
       <dl className="mt-4 space-y-3 text-sm">
         {rows.map(([k, v]) => (
           <div key={k}>
-            <dt className={cn("font-mono text-[11px] uppercase tracking-[0.18em]", dark ? "text-[#F4F0E8]/50" : "text-[#57515B]")}>{k}</dt>
+            <dt className={cn("font-mono text-[11px] uppercase tracking-[0.18em]", dark ? "text-[#5D6961]" : "text-[#5D6961]")}>{k}</dt>
             <dd className="mt-1 leading-relaxed">{v}</dd>
           </div>
         ))}
         <div>
-            <dt className={cn("font-mono text-[11px] uppercase tracking-[0.18em]", dark ? "text-[#F4F0E8]/50" : "text-[#57515B]")}>Access</dt>
+            <dt className={cn("font-mono text-[11px] uppercase tracking-[0.18em]", dark ? "text-[#5D6961]" : "text-[#5D6961]")}>Access</dt>
           <dd className="mt-1 font-mono text-[11px] uppercase tracking-[0.18em]">{access}</dd>
         </div>
       </dl>
@@ -95,7 +95,7 @@ function Manifest({ project, dark }: { project: Project; dark: boolean }) {
         href={`/projects/${project.slug}`}
         className={cn(
           "mt-6 inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors",
-          dark ? "bg-[#F4F0E8] text-[#21152E] hover:bg-[#B9A7FF]" : "bg-[#111014] text-[#F4F0E8] hover:bg-[#FF5C5C]"
+          dark ? "bg-[#47735F] text-[#F6F1E8] hover:bg-[#C7664D]" : "bg-[#1E2823] text-[#F6F1E8] hover:bg-[#C7664D]"
         )}
       >
         Open shipment <ArrowRight size={15} />
@@ -114,7 +114,7 @@ function SceneHead({ project, index, dark }: { project: Project; index: number; 
           {project.accent ?? project.title.split(" ").slice(1).join(" ")}
         </span>
       </h3>
-      <p className={cn("mt-4 max-w-xl text-lg leading-relaxed md:text-xl", dark ? "text-[#F4F0E8]/75" : "text-[#111014]/70")}>
+      <p className={cn("mt-4 max-w-xl text-lg leading-relaxed md:text-xl", dark ? "text-[#1E2823]/75" : "text-[#1E2823]/70")}>
         {project.tagline}
       </p>
     </Reveal>
@@ -122,7 +122,7 @@ function SceneHead({ project, index, dark }: { project: Project; index: number; 
 }
 
 export function ProjectScene({ project, index }: { project: Project; index: number }) {
-  const dark = project.colorway === "plum";
+  const dark = project.colorway === "sage";
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
@@ -138,7 +138,7 @@ export function ProjectScene({ project, index }: { project: Project; index: numb
         // ponytail: hairline seam keeps colorway alternation continuous;
         // boundary padding trimmed so scenes read as one archive.
         "relative overflow-hidden border-t py-28 md:py-32",
-        dark ? "border-white/10 bg-[#21152E] text-[#F4F0E8]" : "border-[#111014]/10 bg-[#F4F0E8] text-[#111014]"
+        dark ? "border-[#1E2823]/10 bg-[#E5EEE5] text-[#1E2823]" : "border-[#1E2823]/10 bg-[#F6F1E8] text-[#1E2823]"
       )}
     >
       <motion.span
@@ -147,7 +147,7 @@ export function ProjectScene({ project, index }: { project: Project; index: numb
         className={cn(
           "font-display pointer-events-none absolute -top-4 select-none text-[32vw] leading-none md:text-[24vw]",
           index % 2 === 1 ? "-right-4" : "-left-4",
-          dark ? "text-[#F4F0E8]/[0.05]" : "text-[#111014]/[0.05]"
+          dark ? "text-[#47735F]/[0.08]" : "text-[#1E2823]/[0.05]"
         )}
       >
         {num(index)}
@@ -237,7 +237,7 @@ export function ProjectScene({ project, index }: { project: Project; index: numb
                   </div>
                 ))}
               </div>
-              <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#F4F0E8]/50">
+              <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#5D6961]">
                 Scroll → featured · hero · stores
               </p>
             </Reveal>

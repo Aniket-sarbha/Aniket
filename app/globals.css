@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ivory: #f4f0e8;
-  --color-plum: #21152e;
-  --color-coral: #ff5c5c;
-  --color-ember: #b3272d;
-  --color-bark: #57515b;
-  --color-lavender: #b9a7ff;
-  --color-ink: #111014;
-  --color-taupe: #8e8790;
+  --color-ivory: #f6f1e8;
+  --color-plum: #e5eee5;
+  --color-coral: #c7664d;
+  --color-ember: #a44b3b;
+  --color-bark: #5d6961;
+  --color-lavender: #47735f;
+  --color-ink: #1e2823;
+  --color-taupe: #8b958d;
   --font-display: var(--font-display);
   --font-editorial: var(--font-editorial);
   --font-body: var(--font-body);
@@ -17,8 +17,8 @@
 }
 
 :root {
-  --background: #f4f0e8;
-  --foreground: #111014;
+  --background: #f6f1e8;
+  --foreground: #1e2823;
 }
 
 /* NOTE: no `scroll-behavior: smooth` — Lenis owns smoothing. */
@@ -44,19 +44,12 @@ body {
 }
 
 ::selection {
-  background: #ff5c5c;
-  color: #f4f0e8;
-}
-
-/* Plum scenes keep the coral signal on select */
-.bg-plum-select ::selection,
-section[class*="bg-[#21152E]"] ::selection {
-  background: #b9a7ff;
-  color: #21152e;
+  background: #c7664d;
+  color: #f6f1e8;
 }
 
 :focus-visible {
-  outline: 2px solid #ff5c5c;
+  outline: 2px solid #c7664d;
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -65,10 +58,10 @@ section[class*="bg-[#21152E]"] ::selection {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #f4f0e8;
+  background: #f6f1e8;
 }
 ::-webkit-scrollbar-thumb {
-  background: #21152e;
+  background: #47735f;
   border-radius: 8px;
 }
 

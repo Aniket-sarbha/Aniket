@@ -32,7 +32,7 @@ export function IndexList() {
         if (!rect) return;
         setPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
       }}
-      className="relative scroll-mt-20 bg-[#21152E] py-24 text-[#F4F0E8] md:py-32"
+      className="relative scroll-mt-20 bg-[#E5EEE5] py-24 text-[#1E2823] md:py-32"
     >
       <div className="mx-auto max-w-7xl px-5 md:px-10">
         <Reveal>
@@ -42,11 +42,11 @@ export function IndexList() {
             <span aria-hidden className="text-[#FF5C5C]">*</span>
           </h2>
         </Reveal>
-        <ul className="mt-12 border-t border-white/10">
+        <ul className="mt-12 border-t border-[#1E2823]/10">
           {projects.map((p, i) => {
             const active = hovered === i;
             return (
-              <li key={p.slug} className="border-b border-white/10">
+              <li key={p.slug} className="border-b border-[#1E2823]/10">
                 <Link
                   href={`/projects/${p.slug}`}
                   onMouseEnter={() => setHovered(i)}
@@ -56,11 +56,11 @@ export function IndexList() {
                   aria-label={`Open case study: ${p.title}`}
                   className={cn(
                     "group relative grid grid-cols-12 items-baseline gap-x-5 gap-y-1 px-2 py-7 transition-all duration-300 md:py-9",
-                    "focus-visible:outline-[#B9A7FF]",
-                    active && "bg-[#F4F0E8]/[0.04]"
+                    "focus-visible:outline-[#47735F]",
+                    active && "bg-[#F6F1E8]/70"
                   )}
                 >
-                  <span className="col-span-2 font-mono text-xs text-[#FF5C5C] md:col-span-1">
+                  <span className="col-span-2 font-mono text-xs text-[#C7664D] md:col-span-1">
                     {num(i)}
                   </span>
                   <span className="col-span-8 md:col-span-5 lg:col-span-6">
@@ -72,21 +72,21 @@ export function IndexList() {
                     >
                       {p.title}
                     </span>
-                    <span className="mt-2 block text-sm text-[#F4F0E8]/60 md:hidden">
+                    <span className="mt-2 block text-sm text-[#1E2823]/60 md:hidden">
                       {p.tagline}
                     </span>
                   </span>
-                  <span className="col-span-8 col-start-3 hidden font-mono uppercase tracking-[0.18em] text-[#F4F0E8]/50 md:col-span-5 md:col-start-7 md:block md:text-[10px] lg:col-span-3 lg:col-start-8 lg:text-[11px]">
+                  <span className="col-span-8 col-start-3 hidden font-mono uppercase tracking-[0.18em] text-[#5D6961] md:col-span-5 md:col-start-7 md:block md:text-[10px] lg:col-span-3 lg:col-start-8 lg:text-[11px]">
                     {p.indexTags}
                   </span>
-                  <span className="hidden text-right font-mono text-[11px] uppercase tracking-[0.18em] text-[#F4F0E8]/50 md:col-span-1 lg:block">
+                  <span className="hidden text-right font-mono text-[11px] uppercase tracking-[0.18em] text-[#5D6961] md:col-span-1 lg:block">
                     {p.year}
                   </span>
                   <span className="col-span-2 flex items-center justify-end gap-2 md:col-span-1">
                     <span
                       aria-hidden
                       className={cn(
-                        "hidden whitespace-nowrap font-mono text-[11px] uppercase tracking-[0.18em] text-[#B9A7FF] opacity-0 transition-opacity duration-200 lg:inline",
+                        "hidden whitespace-nowrap font-mono text-[11px] uppercase tracking-[0.18em] text-[#47735F] opacity-0 transition-opacity duration-200 lg:inline",
                         active && "opacity-100"
                       )}
                     >
@@ -96,8 +96,8 @@ export function IndexList() {
                       size={22}
                       aria-hidden
                       className={cn(
-                        "text-[#F4F0E8]/40 transition-all duration-300",
-                        active && "-translate-y-1 translate-x-1 text-[#B9A7FF]"
+                        "text-[#1E2823]/40 transition-all duration-300",
+                        active && "-translate-y-1 translate-x-1 text-[#47735F]"
                       )}
                     />
                   </span>
@@ -110,7 +110,7 @@ export function IndexList() {
                       height={450}
                       sizes="100vw"
                       loading="lazy"
-                      className="h-auto w-full border border-white/15"
+                      className="h-auto w-full border border-[#1E2823]/15"
                     />
                   </span>
                 </Link>
@@ -129,7 +129,7 @@ export function IndexList() {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
           style={{ left: pos.x + 32, top: pos.y - 130 }}
-          className="pointer-events-none absolute z-10 hidden w-[26rem] border border-white/20 bg-[#21152E] lg:block"
+          className="pointer-events-none absolute z-10 hidden w-[26rem] border border-[#1E2823]/20 bg-[#F6F1E8] lg:block"
         >
           <Image
             src={projects[hovered].images[0].src}
@@ -138,7 +138,7 @@ export function IndexList() {
             height={468}
             className="h-auto w-full"
           />
-          <p className="flex items-center justify-between bg-[#B9A7FF] px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-[#21152E]">
+          <p className="flex items-center justify-between bg-[#47735F] px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-[#F6F1E8]">
             <span>View shipment</span>
             <span>{projects[hovered].year}</span>
           </p>

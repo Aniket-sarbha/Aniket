@@ -7,10 +7,6 @@ import { profile, projects } from "@/lib/data";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-function DelhiTime() {
-  // ponytail: static label, no ticking clock — the gimmick wasn't earning its JS.
-  return <span>DELHI / IST</span>;
-}
 
 export function Hero() {
   const reduce = useReducedMotion();
@@ -62,9 +58,6 @@ export function Hero() {
         <motion.div {...anim(0)} className="flex items-start justify-between font-mono text-[11px] uppercase tracking-[0.18em]">
           <p className="text-[#111014]">LOG—26</p>
           <div className="text-right text-[#57515B]">
-            <p>
-              <DelhiTime />
-            </p>
             {profile.available && (
               <p className="mt-1 text-[#111014]">
                 <span aria-hidden className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-[#FF5C5C]" />
@@ -92,9 +85,7 @@ export function Hero() {
 
           <div className="mt-8 flex flex-col gap-6 md:flex-row md:items-end md:justify-between lg:mt-6">
             <motion.p {...anim(0.2)} className="font-mono text-[11px] uppercase leading-relaxed tracking-[0.18em] text-[#111014]/70 md:pl-[12vw]">
-              Full stack
-              <span aria-hidden className="mx-2 text-[#FF5C5C]">/</span>
-              Product engineering
+              Full stack engineer
             </motion.p>
             <motion.a
               {...anim(0.3)}

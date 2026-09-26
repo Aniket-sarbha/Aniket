@@ -1,32 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { navLinks, profile, projects } from "@/lib/data";
+import { navLinks, profile } from "@/lib/data";
 import { ManifestRow } from "@/components/chrome/manifest-row";
 import { HomeLink } from "@/components/chrome/home-link";
-import { useScrollSpy } from "@/hooks/use-scroll-spy";
 import { cn } from "@/lib/utils";
-
-const railIds = ["top", "projects", "experience", "skills", "about", "contact"];
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const pathname = usePathname();
-  const onHome = pathname === "/";
-  const caseSlug = pathname.startsWith("/projects/") ? pathname.split("/").pop() : null;
-  // ponytail: project scenes report as "projects" so the label tracks the archive.
-  const sceneIds = projects.map((p) => `scene-${p.slug}`);
-  const rawActive = useScrollSpy(["projects", ...sceneIds, ...navLinks.slice(1).map((l) => l.href.slice(1))]);
-  const active = rawActive && rawActive.startsWith("scene-") ? "projects" : rawActive;
-  const secLabel = caseSlug
-    ? `SHIP—${caseSlug.replace(/-/g, " ").toUpperCase()}`
-    : active
-      ? `SEC—${active}`
-      : "SEC—TOP";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -79,9 +63,6 @@ export function Navbar() {
             A.SARBH<span className="text-[#FF5C5C]">—LOG</span>
           </HomeLink>
           <div className="flex items-center gap-5">
-              <p className="hidden font-mono text-[11px] uppercase tracking-[0.18em] text-[#57515B] lg:block">
-              {secLabel}
-            </p>
             <button
               onClick={() => setOpen(!open)}
               aria-expanded={open}
@@ -158,38 +139,6 @@ export function Navbar() {
           </motion.nav>
         )}
       </AnimatePresence>
-      <FolioRail active={onHome ? active : null} onHome={onHome} />
     </>
-  );
-}
-
-function FolioRail({ active, onHome }: { active: string | null; onHome: boolean }) {
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > window.innerHeight * 0.7);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-  if (!visible) return null;
-  return (
-    <nav
-      aria-label="Section shortcuts"
-      className="fixed right-4 top-1/2 z-30 hidden -translate-y-1/2 flex-col gap-3 xl:flex"
-    >
-      {railIds.map((id) => (
-        <HomeLink
-          key={id}
-          hash={`#${id}`}
-          ariaLabel={`Go to ${id}`}
-          className={cn(
-            "h-8 w-1 rounded-full transition-colors",
-            onHome && active === id ? "bg-[#FF5C5C]" : "bg-[#111014]/15 hover:bg-[#111014]/35"
-          )}
-        >
-          <span aria-hidden className="block h-full w-full" />
-        </HomeLink>
-      ))}
-    </nav>
   );
 }

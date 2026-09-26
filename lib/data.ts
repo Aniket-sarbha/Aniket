@@ -77,7 +77,7 @@ export type Project = {
   liveUrl?: string;
   repoUrl?: string;
   year: string;
-  colorway: "ivory" | "plum";
+  colorway: "paper" | "sage";
   artifact: Artifact;
   images: ProjectImage[];
   overview: string;
@@ -98,7 +98,7 @@ export const projects: Project[] = [
     liveUrl: "https://file-drive-coral.vercel.app/",
     repoUrl: "https://github.com/Aniket-sarbha/File-drive",
     year: "2024",
-    colorway: "ivory",
+    colorway: "paper",
     artifact: "file-stack",
     images: [
       {
@@ -130,7 +130,7 @@ export const projects: Project[] = [
     stack: ["Next.js", "Supabase", "Framer Motion", "TypeScript"],
     liveUrl: "https://fortificationlearninghub.org/",
     year: "2024",
-    colorway: "plum",
+    colorway: "sage",
     artifact: "approval-queue",
     images: [
       {
@@ -165,7 +165,7 @@ export const projects: Project[] = [
     tagline: "QR-powered recovery infrastructure for lost pets.",
     stack: ["React", "Supabase", "Vite", "Shadcn"],
     year: "2025",
-    colorway: "ivory",
+    colorway: "paper",
     artifact: "tag-grid",
     images: [
       {
@@ -198,7 +198,7 @@ export const projects: Project[] = [
     stack: ["Next.js", "Prisma", "PostgreSQL", "NextAuth.js"],
     repoUrl: "https://github.com/Aniket-sarbha/game-ecommerce",
     year: "2025",
-    colorway: "plum",
+    colorway: "sage",
     artifact: "storefront-shelf",
     images: [
       {

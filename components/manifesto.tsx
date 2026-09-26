@@ -14,12 +14,6 @@ export function Manifesto() {
             with clean access control and admin flows teams actually use.
           </p>
         </Reveal>
-        <Reveal delay={0.1} className="col-span-12 mt-8 lg:col-span-3 lg:mt-0">
-          <p className="border-l-2 border-[#FF5C5C] pl-4 text-[15px] leading-relaxed text-[#111014]/70">
-            Every entry below is a real product with real screens. No mockups,
-            no placeholders — open any case to see the work.
-          </p>
-        </Reveal>
       </div>
     </section>
   );

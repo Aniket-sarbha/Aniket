@@ -1,34 +1,35 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
-// ponytail: editorial cover reveal. Session-gated, instant-skip on
-// reduced-motion or repeat visits. Pure exit choreography, no assets.
+// ponytail: editorial cover reveal. Instant-skip on reduced-motion.
+// Pure exit choreography, no assets.
 export function Preloader() {
   const reduce = useReducedMotion();
-  // Server and client must match on first render (no sessionStorage in
-  // initializers); sync with the external store in the effect below.
+  const pathname = usePathname();
+  // Server and client must match on first render; start the reveal in the effect.
   const [show, setShow] = useState(false);
   const [leaving, setLeaving] = useState(false);
 
   useEffect(() => {
-    if (reduce || sessionStorage.getItem("shiplog-seen")) return;
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- syncing with sessionStorage, a legit external system
+    if (reduce) return;
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- syncing initial client-only animation state
+    setLeaving(false);
     setShow(true);
     document.body.style.overflow = "hidden";
     const t1 = setTimeout(() => setLeaving(true), 1400);
     const t2 = setTimeout(() => {
       setShow(false);
       document.body.style.overflow = "";
-      sessionStorage.setItem("shiplog-seen", "1");
     }, 2100);
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
       document.body.style.overflow = "";
     };
-  }, [reduce, show]);
+  }, [pathname, reduce]);
 
   return (
     <AnimatePresence>
