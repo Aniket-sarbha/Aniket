@@ -97,7 +97,7 @@ export const projects: Project[] = [
     stack: ["Next.js", "Convex", "Clerk", "Gemini"],
     liveUrl: "https://file-drive-coral.vercel.app/",
     repoUrl: "https://github.com/Aniket-sarbha/File-drive",
-    year: "2024",
+    year: "2025",
     colorway: "paper",
     artifact: "file-stack",
     images: [
@@ -129,7 +129,7 @@ export const projects: Project[] = [
     tagline: "A governed knowledge platform with role-based publishing.",
     stack: ["Next.js", "Supabase", "Framer Motion", "TypeScript"],
     liveUrl: "https://fortificationlearninghub.org/",
-    year: "2024",
+    year: "2026",
     colorway: "sage",
     artifact: "approval-queue",
     images: [
